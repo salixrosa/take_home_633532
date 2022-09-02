@@ -21,6 +21,8 @@ def shortest_paths(graph: Graph, start: Node, finish: Node):
         node_to_calculate_from = _find_next_node(nodes_w_unexplored_neighbors, distances)
         nodes_w_unexplored_neighbors.remove(node_to_calculate_from)
         if node_to_calculate_from == finish:
+            # it would be much more efficient if, once we had a shortest path all the one through, we stopped calculating
+            # routes that were already longer than that shortest route... but I am entirely out of time here.
             continue  # if we're looking at the final node in the path, we don't need to look out to its neighbors
         for neighboring_edge in graph.get_routes_from(node_to_calculate_from):
             calculated_distance = distances[node_to_calculate_from] + neighboring_edge.weight
