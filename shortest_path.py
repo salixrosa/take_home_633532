@@ -4,7 +4,7 @@ from Graph import Graph
 from Node import Node
 
 
-def shortest_path(graph: Graph, start: Node, finish: Node):
+def shortest_paths(graph: Graph, start: Node, finish: Node):
     if start == finish:
         return [], 0
 

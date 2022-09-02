@@ -9,20 +9,20 @@ Here, I've decided to re-implement Dijkstra's in Python, since it seemed safe to
 I selected Python for entirely circumstantial, personal reasons (my personal machine is not currently set up to develop in Kotlin). I would much refer to have Kotlin's typing though.
 
 ### Function
-The main function here is `dijkstra_shortest_path` located in `shortest_path.py`. It can be used like so:
+The main function here is `shortest_paths` located in `shortest_path.py`. It can be used like so:
 ```python
 facility_1 = Node("A")
 facility_2 = Node("B")
 route_1 = DirectedEdge(facility_1, facility_2, weight = 10)
 route_map = Graph([route_1])
-shortest_paths, total_cost = dijkstra_shortest_path(route_map, facility_1, facility_2)
+shortest_paths, total_cost = shortest_paths(route_map, facility_1, facility_2)
 shortest_paths # [[facility_1, facility_2]]
 total_cost  # 10
 ```
 shortest_paths will be a list of lists, where each list contains the facilities to be traversed, in order, and the total_cost is the sum of the entire path(s).  
 
 ### Testing
-I did not clearly distinguish separate test functions or use a testing framework. Tests are contained within the `sample_tests.py` file, and are meant to be checked by running that file.
+I didn't do proper testing here -- I'm not using a testing framework or even `assert`. Tests are contained within the `sample_tests.py` file, and are meant to be checked by running that file.
 
 If you have the docker compose plugin in your machine, the tests can be run using the `docker compose run test` command from this directory. Otherwise, they can be run using python 3 locally. Running the `sample_tests.py` file will give logging on the tests being run and whether they passed or failed. Currently, one test is failing, to illustrate a point; I made no decision on how the graph should handle the same edge being input multiple times with different weights.
 
